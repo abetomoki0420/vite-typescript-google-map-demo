@@ -1,12 +1,16 @@
+import MapOptions = google.maps.MapOptions
 import { Loader } from '@googlemaps/js-api-loader';
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 
-const useGoogleMap = (elementId: string,  apiKey: string) => {
+const useGoogleMap = (elementId: string,  apiKey: string, initMapOptions: MapOptions) => {
   const loader = new Loader({
     apiKey,
     version: "weekly",
     libraries: ["places"]
   })
+  
+  const mapOptions = ref<MapOptions>({})
+  mapOptions.value = initMapOptions;
   
   onMounted( async () => {
     const google = await loader.load()
@@ -17,11 +21,7 @@ const useGoogleMap = (elementId: string,  apiKey: string) => {
       return;
     }
     
-    const mapOptions = {
-      center: { lat: 51.532005, lng: -0.177331 },
-      zoom: 20
-    };
-    new google.maps.Map(elm, mapOptions )
+    new google.maps.Map(elm, mapOptions.value )
   });
 }
 
