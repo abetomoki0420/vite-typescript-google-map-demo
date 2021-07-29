@@ -8,7 +8,7 @@ import useGoogleMap from "../composables/map";
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY as string;
 
-useGoogleMap(apiKey)
+useGoogleMap("map", apiKey)
 
 </script>
 

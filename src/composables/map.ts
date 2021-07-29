@@ -1,7 +1,7 @@
 import { Loader } from '@googlemaps/js-api-loader';
 import { onMounted } from "vue";
 
-const useGoogleMap = (apiKey: string) => {
+const useGoogleMap = (elementId: string,  apiKey: string) => {
   const loader = new Loader({
     apiKey,
     version: "weekly",
@@ -11,7 +11,7 @@ const useGoogleMap = (apiKey: string) => {
   onMounted( async () => {
     const google = await loader.load()
     
-    const elm = document.getElementById("map");
+    const elm = document.getElementById(elementId);
   
     if(!elm){
       return;
