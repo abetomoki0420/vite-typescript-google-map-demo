@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <Map />
-  </div>
+  <Map />
 </template>
 
 <script lang="ts">
@@ -14,10 +12,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-.container {
-  height: 95vh;
-  width: 95vw;
-}
-</style>
